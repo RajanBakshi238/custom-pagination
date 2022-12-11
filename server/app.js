@@ -3,7 +3,7 @@ const express = require("express");
 var morgan = require('morgan')
 var cors = require('cors')
 const itemController = require('./controllers/itemController')
-
+const formController = require('./controllers/formController')
 
 const PORT = 3800;
 const app = express();
@@ -16,6 +16,7 @@ app.use(express.json())
 
 app.route("/tasks").get(itemController.getAllItems)
 app.route("/tasks").post(itemController.createItem)
+app.route("/form").post(formController.upload.single('testImage'), formController.createFormData )
 
 
 mongoose
